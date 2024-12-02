@@ -4,7 +4,8 @@ import prisma from "../../../../prisma/client";
 
 const createIssueSchema = z.object({
     'title': z.string().min(1).max(255),
-    'description': z.string().min(1)
+    'description': z.string().min(1),
+    'category': z.string().min(1)
 })
 
 export const POST = async (request: NextRequest) => {
@@ -23,6 +24,7 @@ export const POST = async (request: NextRequest) => {
             data: {
                 title: validation.data.title,
                 description: validation.data.description,
+                category: validation.data.category,
             },
         });
 
